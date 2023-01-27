@@ -5,6 +5,7 @@ The backend is responsible for managing the game state, and communicating with t
 
 ---
 
+
 #### Running the server
 To run the server, you must have Maven installed, and then run the following command in the root directory of the project:
 ```
@@ -16,3 +17,8 @@ To run the tests, you must have Maven installed, and then run the following comm
 ```
 mvn test
 ```
+---
+
+#### Frontend Implementation
+The frontend for this project can be found [here](https://github.com/JTravaux/liars-dice-frontend). It is also a work in
+progress, and is currently being developed using React & TypeScript.
