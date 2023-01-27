@@ -12,13 +12,12 @@ public class WebsocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(final MessageBrokerRegistry registry) {
-        registry.setUserDestinationPrefix("/user");
         registry.setApplicationDestinationPrefixes("/ws");
         registry.enableSimpleBroker("/game");
     }
 
     @Override
     public void registerStompEndpoints(final StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws").setHandshakeHandler(new UserHandshakeHandler()).withSockJS();
+        registry.addEndpoint("/ws").setAllowedOrigins("http://localhost:3000").setHandshakeHandler(new UserHandshakeHandler()).withSockJS();
     }
 }

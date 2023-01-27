@@ -172,4 +172,20 @@ public class GameServiceTests extends LiarsDiceBackendApplicationTests {
         // Make sure the game is finished
         assert(g.getStatus() == Game.Status.FINISHED);
     }
+
+    @Test
+    void GameIdIsUnique() {
+        GameSettings settings = this.newGameSettings();
+
+        // Generate new games and add them to the service
+        int numGames = 100;
+        for (int i = 0; i < numGames; i++) {
+            Game g = new Game(this.gameService.generateGameId(), settings);
+            this.gameService.addGame(g);
+        }
+
+        // Make sure all the games have unique IDs
+        assert (this.gameService.getGames().size() == numGames);
+        assert (this.gameService.getGames().stream().map(Game::getId).distinct().count() == numGames);
+    }
 }

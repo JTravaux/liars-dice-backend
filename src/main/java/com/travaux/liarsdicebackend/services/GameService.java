@@ -13,13 +13,19 @@ public class GameService {
     private List<Game> games;
     private final UtilService utilService;
 
+    // Using a separate list because an ID may be generated but not used in a game yet
+    // This is to prevent the same ID from being generated twice on the UI
+    private List<String> generatedIds;
+
     public GameService(UtilService utilService) {
         this.games = new ArrayList<>();
         this.utilService = utilService;
+        this.generatedIds = new ArrayList<>();
     }
 
     public void addGame(Game game) {
         games.add(game);
+        generatedIds.remove(game.getId());
     }
 
     public void removeGame(String id) throws Exception {
@@ -34,14 +40,24 @@ public class GameService {
     public Game getGame(String id) {
         return games.stream().filter(g -> g.getId().equals(id)).findFirst().orElse(null);
     }
+    public List<String> getGeneratedIds() {
+        return generatedIds;
+    }
+
+    public List<Game> getGames() {
+        return games;
+    }
 
     public String generateGameId() {
         String id = utilService.generateGameId();
 
-        // Make sure the id is unique within the list of current games
-        while (getGame(id) != null) {
+        // Make sure the id is unique within the list of current generated ids
+        while (generatedIds.contains(id)) {
             id = utilService.generateGameId();
         }
+
+        // Add the id to the list of generated ids
+        generatedIds.add(id);
 
         return id;
     }

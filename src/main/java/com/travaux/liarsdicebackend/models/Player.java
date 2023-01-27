@@ -2,9 +2,8 @@ package com.travaux.liarsdicebackend.models;
 
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.ArrayList;
 
 @Data
 public class Player {
@@ -13,11 +12,11 @@ public class Player {
     private boolean isReady;
     private List<Integer> dice;
 
-    public Player(String name) {
+    public Player(String name, String id) {
+        this.id = id;
         this.name = name;
         this.isReady = false;
         this.dice = new ArrayList<>();
-        this.id = UUID.randomUUID().toString();
     }
 
     public void addDice(int dicePerPlayer) {

@@ -15,11 +15,6 @@ public class UserHandshakeHandler extends DefaultHandshakeHandler {
 
     @Override
     protected Principal determineUser(ServerHttpRequest request, WebSocketHandler wsHandler, Map<String, Object> attributes) {
-        System.out.println("determineUser request: " + request);
-        System.out.println("determineUser wsHandler: " + wsHandler);
-        System.out.println("determineUser attributes: " + attributes);
-
-        // TODO: Use the request to determine the user ID which is in the Player object
         String randomID = UUID.randomUUID().toString();
         LOG.info("User ID: " + randomID);
 

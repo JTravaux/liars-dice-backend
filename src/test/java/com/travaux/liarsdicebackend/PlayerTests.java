@@ -8,7 +8,7 @@ public class PlayerTests extends LiarsDiceBackendApplicationTests {
     @Test
     void createPlayer() {
         // Create a new player
-        Player p = new Player("Test Player");
+        Player p = new Player("Test Player", "1234");
 
         logger.info("Created " + p.toString());
 
@@ -28,7 +28,7 @@ public class PlayerTests extends LiarsDiceBackendApplicationTests {
     @Test
     void addDice() {
         // Create a new player
-        Player p = new Player("Test Player");
+        Player p = new Player("Test Player", "1234");
 
         // Add 5 dice to the player
         p.addDice(5);
@@ -41,7 +41,7 @@ public class PlayerTests extends LiarsDiceBackendApplicationTests {
     @Test
     void rollDice() {
         // Create a new player
-        Player p = new Player("Test Player");
+        Player p = new Player("Test Player", "1234");
 
         // Add 5 dice to the player
         p.addDice(5);

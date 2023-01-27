@@ -6,9 +6,13 @@ import lombok.Data;
 @Data
 @Builder
 public class GameSettings {
-    private Player owner;
     private String roomName;
+
+    private Player owner;
+
     private int maxPlayers;
     private int dicePerPlayer;
-    private boolean showTotalDice;
+
+    private boolean isTotalDiceVisible;
+    private boolean isDicePerPlayerVisible;
 }
